@@ -3,9 +3,9 @@ package main;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.TreeMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.TreeSet;
 
 public class AdjacencyMatrixGraph {
@@ -57,13 +57,8 @@ public class AdjacencyMatrixGraph {
 
 	// Matrix index for a node name, or -1 if the name is not in the graph
 	public int indexOf(String name) {
-		Integer idx = indexOfMap().get(name);
+		Integer idx = indexOf.get(name);
 		return (idx == null) ? -1 : idx;
-	}
-
-	// Internal helper so the field stays private but lookups still work
-	private Map<String, Integer> indexOfMap() {
-		return indexOf;
 	}
 
 	// Returns the column indices of all neighbors of row i
@@ -79,8 +74,8 @@ public class AdjacencyMatrixGraph {
 
 	// Weight of the edge between two node names, or NO_EDGE if none
 	public double weight(String src, String dest) {
-		Integer i = indexOfMap().get(src);
-		Integer j = indexOfMap().get(dest);
+		Integer i = indexOf.get(src);
+		Integer j = indexOf.get(dest);
 		if (i == null || j == null) {
 			return NO_EDGE;
 		}
